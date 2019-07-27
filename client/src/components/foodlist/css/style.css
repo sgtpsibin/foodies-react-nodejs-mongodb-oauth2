@@ -1,0 +1,23 @@
+.homeItem .card {	
+	min-height: 350px;
+	max-height: 350px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pagination .page-item.active .page-link {
+	z-index: 1;
+	color:white !important;
+	background-color: #ffc107 !important;
+	border-color:#fd7e14 !important;
+}
+
+.pagination .page-link {
+	font-weight: bold;
+	color: #ffc107;
+}
+
+.foodloader {
+	margin-top: 20vh;
+	margin-left: 15vh;
+}
