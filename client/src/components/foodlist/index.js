@@ -18,21 +18,21 @@ class FoodList extends Component {
 
 	loadItem = () =>(
 		 this.props.data.data.map(food=>
-				<FoodItem key={food._id} title={food.food_name} price={food.food_price}
+				<FoodItem id={food._id} key={food._id} title={food.food_name} price={food.food_price}
 					img={food.food_image} description={food.food_description}/>)
 				
 	)
 
 	render() {
 		return (
-			<>
-			<div className='row mb-4'>
-				{this.props.isLoad && this.loadAnimation()}
-				{!this.props.isLoad && this.props.data.data && this.loadItem()}		
-				
+			<div className="container">
+				<div className='row mb-4'>
+					{this.props.isLoad && this.loadAnimation()}
+					{!this.props.isLoad && this.props.data.data && this.loadItem()}		
+					
+				</div>
+				<Pagination page={this.props.data.page} pages={this.props.data.pages}/>		
 			</div>
-			<Pagination page={this.props.data.page} pages={this.props.data.pages}/>		
-			</>
 		)
 	}
 }

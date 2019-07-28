@@ -1,17 +1,21 @@
 import React from 'react';
 import FoodList from './components/foodlist';
-import Navbar from './components/navbar'
+import Navbar from './components/navbar';
+import FoodPage from './components/foodpage';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
 
 
 function App() {
   return (
   	<>
-  		<div className="container-fluid mx-0">
+      <BrowserRouter>   
+        <div>
   			<Navbar/>
-  		</div>
-	    <div className="container my-4">
-	      <FoodList/>
-	    </div>						
+
+        <Route exact path="/" component={FoodList}/> 
+        <Route path="/*.:id" component={FoodPage}/> 
+	      </div>
+      </BrowserRouter>
     </>
     );
 }

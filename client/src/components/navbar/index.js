@@ -1,8 +1,7 @@
 import React, {Component,Fragment} from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import {fetchUser} from '../../store/actions/foodlist.action';
-
+import {Link} from 'react-router-dom';
 class Navbar extends Component {
 
 	componentWillMount() {
@@ -12,34 +11,33 @@ class Navbar extends Component {
 	renderLogin = () => {
 		if(!this.props.userName){
 			return (
-					<li className="nav-item">
-							<a className="nav-link p-2 bg-danger" href="/auth/google">Login With Google </a>
-					</li>
+				<li className="nav-item">
+					<a className="nav-link p-2 bg-danger" href="/auth/google">Login With Google </a>
+				</li>
 			)
 		}
 		return (
 			<Fragment>
-			<li className="nav-item text-white">			
-				Xin chào, {this.props.userName}					
-			</li>
-			<li className="nav-item ml-5">				
-				<img src={this.props.userImage} className="rounded-circle" width="25px"/>					
-			</li>
-			<li className="nav-item ml-5">
-				<a href="/api/logout">Logout</a>
-			</li>
+				<li className="nav-item text-white">			
+					Xin chào, {this.props.userName}					
+				</li>
+				<li className="nav-item ml-5">				
+					<img src={this.props.userImage} className="rounded-circle" width="25px" alt="..."/>					
+				</li>
+				<li className="nav-item ml-5">
+					<a href="/api/logout">Logout</a>
+				</li>
 			</Fragment>
-			)
-
-			
+		)
 		
 	}
 
 	render() {
 
 		return(
+			<div className="container-fluid mx-0 mb-4">
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark py-0">
-				<a className="navbar-brand" href="#">FOODIES</a>
+				<Link className="navbar-brand" to="/">FOODIES</Link>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon" />
 				</button>
@@ -57,6 +55,7 @@ class Navbar extends Component {
 					</ul>				
 				</div>							
 			</nav>
+			</div>
 
 			);
 	}

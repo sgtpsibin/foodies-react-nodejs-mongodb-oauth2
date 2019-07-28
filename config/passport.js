@@ -23,13 +23,15 @@ passport.use(new GoogleStrategy({
     if(_user) {
     	cb(null,_user);
     } else {
+      
     	const __user = await new User({
     		GoogleID: profile.id,
     		email:profile.emails[0].value,
     		displayName: profile.displayName,
     		image: profile.photos[0].value
     	}).save();
-        cb(null,__user);
+
+      cb(null,__user);
     }
   }
 ));

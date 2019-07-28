@@ -9,7 +9,6 @@ export const FETCH_USER = 'FETCH_USER'
 export const getData = (url) => async (dispatch) =>{
 	dispatch({type:LOADING});	
 	const respone = await axios.get(url);
-	console.log(respone.data);
 	dispatch({type:GET_DATA,payload:{data:respone.data}});
 	dispatch({type:LOADED});
 };

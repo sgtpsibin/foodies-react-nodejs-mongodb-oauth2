@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const mongoose = require('mongoose');
 const Food = require('../models/food.model');
 
-/* GET ddata */
+
+//API Route :/api/[example]
+
+
+/* GET Data */
 router.get('/get_food_data', async function(req, res, next) {
   const paginateOptions = {
     page: req.query.page || 1,
@@ -27,20 +32,20 @@ router.get('/get_food_data', async function(req, res, next) {
       });
     }
   });
-  // Food.find(req.query,null,{limit:8},await function(err,docs){
-  // 	if(err) {
-  // 		res.json({
-  // 			"status":"Failed",
-  // 			"data":[],
-  // 			"Message": err
-  // 		});
-  // 	} else {
-  // 		res.json({
-  // 			"status":"Success",
-  // 			"data":docs
-  // 		});
-  // 	}
-  // });
+});
+
+router.get('/get_food_by_id',async (req,res)=>{
+  if(!req.query.food_id) {
+    res.status(400).json({
+      "status": Failed,
+      "data":[]
+    })
+  }
+  _food = await Food.findById(req.query.food_id).exec();
+  if(!_food) {
+    res.status(404).send('Not Found');
+  }
+  res.send(_food);
 });
 
 router.get('/current_user',(req,res)=>{
