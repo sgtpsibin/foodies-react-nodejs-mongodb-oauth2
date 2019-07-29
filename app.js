@@ -35,7 +35,8 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Connect MongoDB
-mongoose.connect('mongodb://localhost:27017/foodies', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://sgtpsibin:AOSteam1102!@quanganh-acdyo.mongodb.net/foodies'
+, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

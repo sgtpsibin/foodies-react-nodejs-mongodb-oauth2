@@ -7,7 +7,7 @@ import Pagination from './pagination';
 class FoodList extends Component {
 	
 	componentWillMount() {
-		this.props.getData('/api/get_food_data');
+		this.props.getData(process.env.REACT_APP_API_URL+'get_food_data');
 	}
 
 	loadAnimation = () => (
@@ -24,6 +24,7 @@ class FoodList extends Component {
 	)
 
 	render() {
+		
 		return (
 			<div className="container">
 				<div className='row mb-4'>
@@ -31,7 +32,7 @@ class FoodList extends Component {
 					{!this.props.isLoad && this.props.data.data && this.loadItem()}		
 					
 				</div>
-				<Pagination page={this.props.data.page} pages={this.props.data.pages}/>		
+				<Pagination pages={this.props.data.pages}/>		
 			</div>
 		)
 	}

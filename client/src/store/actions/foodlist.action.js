@@ -16,7 +16,6 @@ export const getData = (url) => async (dispatch) =>{
 
 export const fetchUser = (url) => async (dispatch) => {
 
-
 	const user = await axios.get(url);
 	dispatch({type:FETCH_USER,payload:{user:user.data}});
 

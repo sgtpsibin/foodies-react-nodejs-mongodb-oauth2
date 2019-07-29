@@ -10,10 +10,14 @@ function App() {
   	<>
       <BrowserRouter>   
         <div>
+
   			<Navbar/>
 
-        <Route exact path="/" component={FoodList}/> 
-        <Route path="/*.:id" component={FoodPage}/> 
+        <Switch>
+          <Route exact path="/" component={FoodList}/> 
+          <Route path="/*.:id" component={FoodPage}/> 
+        </Switch>
+        
 	      </div>
       </BrowserRouter>
     </>

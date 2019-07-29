@@ -1,0 +1,10 @@
+.food-page-loading {
+	position: absolute;
+	top:50;
+	left: 50;
+}
+
+.food-img {
+	position: relative;
+	width: 80%;
+}

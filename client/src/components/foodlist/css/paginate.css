@@ -1,0 +1,24 @@
+.paginate-container li{
+	display: inline;
+
+
+}
+.paginate-container li a{
+	cursor: pointer;
+	padding: 5px 15px;
+	background-color: #343a40;
+	color:white;
+	border: 0.3px solid black;
+	border-left: 0px solid black;
+	outline:none;
+}
+
+.paginate-container .active a {
+	background-color:white;
+	color:black;
+}
+
+.paginate-container li a:hover {
+	background-color:white;
+	color:black;
+}

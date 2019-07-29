@@ -12,19 +12,15 @@ class Navbar extends Component {
 		if(!this.props.userName){
 			return (
 				<li className="nav-item">
-					<a className="nav-link p-2 bg-danger" href="/auth/google">Login With Google </a>
+					<a className="nav-link p-2 bg-danger text-white" href={process.env.REACT_APP_AUTH_URL}>Login With Google </a>
 				</li>
 			)
 		}
 		return (
 			<Fragment>
-				<li className="nav-item text-white">			
+				<li className="nav-item text-white px-2">			
 					Xin chào, {this.props.userName}					
-				</li>
-				<li className="nav-item ml-5">				
-					<img src={this.props.userImage} className="rounded-circle" width="25px" alt="..."/>					
-				</li>
-				<li className="nav-item ml-5">
+					<img src={this.props.userImage} className="rounded-circle mx-3" width="25px" alt="..."/>					
 					<a href="/api/logout">Logout</a>
 				</li>
 			</Fragment>
@@ -33,7 +29,6 @@ class Navbar extends Component {
 	}
 
 	render() {
-
 		return(
 			<div className="container-fluid mx-0 mb-4">
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark py-0">
