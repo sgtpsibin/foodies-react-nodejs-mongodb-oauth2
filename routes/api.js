@@ -49,7 +49,7 @@ router.get('/get_food_by_id',async (req,res)=>{
 });
 
 router.get('/current_user',(req,res)=>{
-  res.send(req.user);
+  res.json(req.user);
 });
 
 

@@ -8,3 +8,14 @@
 	position: relative;
 	width: 80%;
 }
+
+.foodCount {
+	& button {
+		margin:0;
+	}
+	&__input {
+		padding:0;
+		height: 35px;
+		width: 50px;
+	}
+}

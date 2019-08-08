@@ -11,7 +11,7 @@ class Pagination extends Component {
 
 	handlePageClick = (data) => {
 		const {selected} = data
-		this.props.getData(PAGINATE_API_URL+`?page=${selected}`);
+		this.props.getData(PAGINATE_API_URL+`?page=${selected+1}`);
 	}
 
 	

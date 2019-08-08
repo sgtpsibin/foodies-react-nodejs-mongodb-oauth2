@@ -13,6 +13,7 @@ const foodpageReducer = (state=initialState,action) => {
 			return {...state,isLoading:true};
 		case LOADED: 
 			return {...state,isLoading:false};
+		
 		default:
 			return state;
 	}
