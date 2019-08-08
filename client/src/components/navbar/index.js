@@ -1,15 +1,15 @@
 import React, {Component,Fragment} from 'react';
 import { connect } from 'react-redux';
-import {fetchUser} from '../../store/actions/foodlist.action';
+import {getUser} from '../../store/actions/auth.action';
 import {Link} from 'react-router-dom';
 class Navbar extends Component {
 
-	componentWillMount() {
-		this.props.fetchUser('/api/current_user');				
+	componentDidMount() {
+		this.props.getUser('/api/current_user');			
 	}
 
 	renderLogin = () => {
-		if(!this.props.userName){
+		if(!this.props.user){
 			return (
 				<li className="nav-item">
 					<a className="nav-link p-2 bg-danger text-white" href={process.env.REACT_APP_AUTH_URL}>Login With Google </a>
@@ -19,8 +19,8 @@ class Navbar extends Component {
 		return (
 			<Fragment>
 				<li className="nav-item text-white px-2">			
-					Xin chào, {this.props.userName}					
-					<img src={this.props.userImage} className="rounded-circle mx-3" width="25px" alt="..."/>					
+					Xin chào, {this.props.user.displayName}					
+					<img src={this.props.user.image} className="rounded-circle mx-3" width="25px" alt="..."/>					
 					<a href="/api/logout">Logout</a>
 				</li>
 			</Fragment>
@@ -29,6 +29,7 @@ class Navbar extends Component {
 	}
 
 	render() {
+		if (!this.props.user) console.log('haha');
 		return(
 			<div className="container-fluid mx-0 mb-4">
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark py-0">
@@ -51,22 +52,20 @@ class Navbar extends Component {
 				</div>							
 			</nav>
 			</div>
-
 			);
 	}
 
 }
 
 const mapStateToProps = (state) => {
-	return {
-		userName: state.foodlist.user.displayName,
-		userImage: state.foodlist.user.image
+	return {		
+		user: state.auth.user
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchUser: (url) => dispatch(fetchUser(url))
+		getUser: (url) => dispatch(getUser(url))
 	}
 }
 

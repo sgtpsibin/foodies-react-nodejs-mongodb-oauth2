@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
+
 import {getFoodById} from '../../store/actions/foodpage.action';
+import {addToCart} from '../../store/actions/cart.action';
+
 import './css/style.scss';
+
 
 class FoodPage extends Component {
 
@@ -42,24 +46,11 @@ class FoodPage extends Component {
 	decreaseCount = () => {
 		// this.setState(state=>{foodCount: state.foodCount--},(state)=>{document.getElementsByClassName('foodCount__input')[0].value = this.state.foodCount;});
 		// this.forceUpdate();	
-		if(this.state.foodCount>1) {
-			document.querySelector('#count').value--;
-			this.setState({foodCount:document.querySelector('#count').value});
-		} else {
-			document.querySelector('.foodCount__nofi').innerHTML = 'Must be larger than 1';
-		}
-		
+		this.setState((state)=>{foodCount: state.foodCount--});
+		this.forceUpdate();	
 			
 	}
-	changingMonitor = (event) => {
-		if (event.target.value<1) {
-			document.querySelector('.foodCount__nofi').innerHTML = 'Must be larger than 1';
-		} else {
-			document.querySelector('.foodCount__nofi').innerHTML = '';
-		}
-		this.setState({foodCount: event.target.value});	
-		
-	}
+	
 	isDisabled = () => {
 		// const count = document.querySelector("#count").value;
 		if(this.state.foodCount<=1) {
@@ -67,10 +58,19 @@ class FoodPage extends Component {
 		}else {
 			// console.log('false');
 			return false;
-		}
-		
+		}		
 	}
 	//
+	addToCart = () => {
+		if (!this.props.user) {
+			window.alert('Login first');
+		} else {
+			const food_count = this.state.foodCount;
+			const food_sum_price = this.props.foodData.food_price * this.state.foodCount;
+			let cartItem = {...this.props.foodData,food_count,food_sum_price};
+			this.props.addToCart(cartItem);
+		}
+	}
 
 
 
@@ -91,13 +91,13 @@ class FoodPage extends Component {
 						<h1>{food_name}</h1>
 						<p>{food_description}</p>
 						<div className="foodCount">
-							<button id="decrease" type="button" disabled={this.isDisabled()} className="btn btn-dark mr-1"  onClick={this.decreaseCount}>-</button>
-							<input id="count" type="number" value={this.state.foodCount} readOnly className="foodCount__input"/>
-							<button id="increase" type="button" className="btn btn-dark ml-1" onClick={this.increaseCount}>+</button>
+							<button  type="button" disabled={this.isDisabled()} className="btn btn-dark mr-1"  onClick={this.decreaseCount}>-</button>
+							<input type="number" value={this.state.foodCount} readOnly className="foodCount__input"/>
+							<button type="button" className="btn btn-dark ml-1" onClick={this.increaseCount}>+</button>
 							<p className="foodCount__nofi"></p>
 						</div>
 						<h3 className="text-danger my-3">{food_price*this.state.foodCount+'$'}</h3>
-						<button className="btn btn-dark">Ship me!</button>
+						<button className="btn btn-dark" onClick={this.addToCart}>Ship me!</button>
 					</div>
 
 				</div> {/*end row*/}
@@ -110,13 +110,15 @@ class FoodPage extends Component {
 const mapStateToProps = (state) => {
 	return {
 		foodData: state.foodpage.foodData,
-		isLoading: state.foodpage.isLoading
+		isLoading: state.foodpage.isLoading,
+		user: state.auth.user
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getFoodById: (id) => dispatch(getFoodById(id))
+		getFoodById: (id) => dispatch(getFoodById(id)),
+		addToCart: (cartItem) => dispatch(addToCart(cartItem))
 	}
 }
 
