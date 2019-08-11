@@ -44,7 +44,7 @@ db.once('open', function() {
 });
 
 //Routing
-app.use(cors({origin:'http://localhost:3000'}));
+app.use(cors({origin:'https://react-foodies.herokuapp.com/'}));
 // app.use('/', indexRouter);
 
 app.use('/users', usersRouter);
