@@ -32,7 +32,9 @@ class FoodList extends Component {
 					{!this.props.isLoad && this.props.data.data && this.loadItem()}		
 					
 				</div>
-				<Pagination pages={this.props.data.pages}/>		
+				<div className="row">
+					<Pagination pages={this.props.data.pages}/>		
+				</div>
 			</div>
 		)
 	}

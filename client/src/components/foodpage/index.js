@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import {getFoodById} from '../../store/actions/foodpage.action';
 import {addToCart} from '../../store/actions/cart.action';
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import './css/style.scss';
 
@@ -69,6 +71,8 @@ class FoodPage extends Component {
 			const food_sum_price = this.props.foodData.food_price * this.state.foodCount;
 			let cartItem = {...this.props.foodData,food_count,food_sum_price};
 			this.props.addToCart(cartItem);
+			toast.success(`Added ${food_count} item to cart!`);
+
 		}
 	}
 
@@ -80,6 +84,19 @@ class FoodPage extends Component {
 		// console.log('re');
 		return (
 			<div className="container mt-5">
+				<div className="row mt-5">
+				<ToastContainer 
+					position="top-right"
+					autoClose={2000}
+					hideProgressBar={true}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnVisibilityChange
+					draggable
+					pauseOnHover
+				></ToastContainer>
+				</div>
 				<div className="row">
 					<div className="col-lg-4 col-12">
 						<div className="food-img">

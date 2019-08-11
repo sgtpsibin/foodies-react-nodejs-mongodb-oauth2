@@ -9,13 +9,13 @@ class Navbar extends Component {
 	}
 
 	renderLogin = () => {
-		if(!this.props.user){
+		if(!this.props.user || this.props.user === {}){
 			return (
 				<li className="nav-item">
 					<a className="nav-link p-2 bg-danger text-white" href={process.env.REACT_APP_AUTH_URL}>Login With Google </a>
 				</li>
 			)
-		}
+		} else 
 		return (
 			<Fragment>
 				<li className="nav-item text-white px-2">			
@@ -29,7 +29,8 @@ class Navbar extends Component {
 	}
 
 	render() {
-		if (!this.props.user) console.log('haha');
+	
+		
 		return(
 			<div className="container-fluid mx-0 mb-4">
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark py-0">

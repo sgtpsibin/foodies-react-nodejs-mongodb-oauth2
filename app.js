@@ -45,15 +45,22 @@ db.once('open', function() {
 
 //Routing
 app.use(cors({origin:'http://localhost:3000'}));
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 app.use('/auth',authRouter);
+app.get('**', function(req, res, next) {
+  
+  res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {

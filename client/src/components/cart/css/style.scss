@@ -1,0 +1,15 @@
+.cart-button {
+    position: absolute;
+    position: fixed;
+    bottom: 5vh;
+    right: 5vh;
+    cursor: pointer;
+    &__nofi p {
+        font-size: 10px;
+        position: absolute;
+        top:4px;
+        right: 2px;
+        border-radius: 100%;
+        padding: 4px;
+    }
+}
