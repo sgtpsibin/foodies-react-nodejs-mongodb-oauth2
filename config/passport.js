@@ -14,9 +14,9 @@ passport.deserializeUser(async (id, done) => {
 
 
 passport.use(new GoogleStrategy({
-    clientID: '786732207265-gvcmvllcs2h52j62v8uh4ei7nejc8vl2.apps.googleusercontent.com',
-    clientSecret: 'TPRuQIHxIy6QsjpQfheI1F42',
-    callbackURL: "http://localhost:4000/auth/google/callback"
+    clientID: '786732207265-9smu8ustdsi1lncij5dimjck7glir2f5.apps.googleusercontent.com',
+    clientSecret: 'YXCmT0ZInC0OPWgJrvnKQ1xr',
+    callbackURL: "https://react-foodies.herokuapp.com/auth/google/callback"
   },
   async function(accessToken, refreshToken, profile, cb) {
     const _user = await User.findOne({GoogleID: profile.id});
