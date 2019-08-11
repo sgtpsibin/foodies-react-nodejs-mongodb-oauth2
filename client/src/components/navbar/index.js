@@ -12,7 +12,7 @@ class Navbar extends Component {
 		if(!this.props.user || this.props.user === {}){
 			return (
 				<li className="nav-item">
-					<a className="nav-link p-2 bg-danger text-white" href={process.env.REACT_APP_AUTH_URL}>Login With Google </a>
+					<a className="nav-link p-2 bg-danger text-white" href="/auth/google">Login With Google </a>
 				</li>
 			)
 		} else 

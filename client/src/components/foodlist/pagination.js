@@ -5,7 +5,7 @@ import {getData} from './../../store/actions/foodlist.action';
 import './css/paginate.css';
 
 
-const PAGINATE_API_URL = process.env.REACT_APP_API_URL+'get_food_data';
+const PAGINATE_API_URL = '/api/get_food_data';
 
 function Pagination(props) {
 

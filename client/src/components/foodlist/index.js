@@ -7,7 +7,7 @@ import Pagination from './pagination';
 class FoodList extends Component {
 	
 	componentWillMount() {
-		this.props.getData(process.env.REACT_APP_API_URL+'get_food_data');
+		this.props.getData('/api/get_food_data');
 	}
 
 	loadAnimation = () => (
