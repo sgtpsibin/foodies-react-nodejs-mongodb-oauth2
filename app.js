@@ -50,9 +50,9 @@ app.use(cors({origin:'https://react-foodies.herokuapp.com/'}));
 app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 app.use('/auth',authRouter);
-app.get('**', function(req, res, next) {
-  const root = path.join(__dirname,'client','build');
-  res.sendFile('index.html',{root});
+app.get('/',app.use(express.static(path.join(__dirname,'client','build'))), function(req, res, next) {
+  
+  res.sendFile('index.html');
 });
 
 // catch 404 and forward to error handler
