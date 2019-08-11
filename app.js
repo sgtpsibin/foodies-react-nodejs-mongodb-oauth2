@@ -51,8 +51,8 @@ app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 app.use('/auth',authRouter);
 app.get('**', function(req, res, next) {
-  
-  res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  const root = path.join(__dirname,'client','build');
+  res.sendFile('index.html',{root});
 });
 
 // catch 404 and forward to error handler
