@@ -8,7 +8,7 @@ Router.get('/google',passport.authenticate('google',{scope:['profile','email']}
 ));
 
 Router.get('/google/callback',passport.authenticate('google', { failureRedirect: '/sss' }),function(req,res){
-	res.redirect('http://localhost:3000/');
+	res.redirect('/');
 });
 
 
